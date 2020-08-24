@@ -1,12 +1,5 @@
 # WIX-Setup
 
-Create shortcut
-Add startup 
-Install window service
-Install application
-Write to register
-Update
-
 ![Screenshot_1](https://user-images.githubusercontent.com/41703864/91048776-d251aa80-e624-11ea-9116-92aa67e0a263.png)
 
 ![Screenshot_2](https://user-images.githubusercontent.com/41703864/91048809-df6e9980-e624-11ea-8013-e9e6682ba941.png)
