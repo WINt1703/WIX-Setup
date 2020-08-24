@@ -31,6 +31,13 @@
     <Content Include="Moduls\WixNetFxExtension.dll" />
     <Content Include="Moduls\wixuiextension.dll" />
     <Content Include="Moduls\WixUtilExtension.dll" />
+    <Content Include="SampleScreen\Screenshot_1.png" />
+    <Content Include="SampleScreen\Screenshot_2.png" />
+    <Content Include="SampleScreen\Screenshot_3.png" />
+    <Content Include="SampleScreen\Screenshot_4.png" />
+    <Content Include="SampleScreen\Screenshot_5.png" />
+    <Content Include="SampleScreen\Screenshot_6.png" />
+    <Content Include="SampleScreen\Screenshot_7.png" />
     <Content Include="SampleSetup.wax" />
     <Content Include="Variables.wxi" />
   </ItemGroup>
@@ -38,6 +45,7 @@
     <Folder Include="License" />
     <Folder Include="Moduls" />
     <Folder Include="Moduls\CustomUI" />
+    <Folder Include="SampleScreen" />
   </ItemGroup>
   <ItemGroup>
     <WixExtension Include="WixNetFxExtension">
