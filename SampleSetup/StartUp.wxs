@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include Variables.wxi?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationAutostart" Guid="*">
+        <RegistryValue Id="$(var.ProductName)" Root="HKMU" Action="write"
+                       Key="Software\Microsoft\Windows\CurrentVersion\Run"
+                       Name="$(var.ProductName)"
+                       Value="[INSTALLDIR]$(var.ProductName).exe"
+                       Type="string"/>
+        <Condition>IS_STARTUP</Condition>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+</Wix>

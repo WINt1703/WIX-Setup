@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include Variables.wxi?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"><?define SampleProject_TargetDir=$(var.SampleProject.TargetDir)?>
+ 
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">      
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="$(var.ProductName)">
+          <Directory Id="Files" Name="Files" />
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="$(var.ProductName)" />
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>     
+  </Fragment>
+  
+  <Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+    <Component Id="SampleProject.exe" Guid="a942ab87-d184-46bd-a0ed-c308944b07bd">
+      <File Id="SampleProject.exe" Name="SampleProject.exe" Source="$(var.SampleProject_TargetDir)SampleProject.exe" />
+    </Component>
+    <Component Id="SampleProject.exe.config" Guid="7dd5456d-cca8-40ed-a4ee-127e9b475443">
+      <File Id="SampleProject.exe.config" Name="SampleProject.exe.config" Source="$(var.SampleProject_TargetDir)SampleProject.exe.config" />
+    </Component>      
+      <!--If you wanna add windows service-->
+      
+      <!--<Component Id="$(var.NameService)" Guid="YOU_GUID" DiskId="1">
+        <File Id="$(var.NameService)" Source="$(var.PathService)"  KeyPath="yes"/>
+        <ServiceInstall Id="$(var.NameService)" Name="$(var.AppName)" DisplayName="$(var.NameService)" Description="$(var.NameService)" ErrorControl="normal" Start="auto" Type="ownProcess" />
+        <ServiceControl Id="$(var.NameService)" Name="$(var.AppName)" Start="install" Stop="both" Remove="uninstall" Wait="yes" />
+      </Component>-->
+    </ComponentGroup>
+  </Fragment>
+  
+</Wix>

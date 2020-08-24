@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include Variables.wxi?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     >
+
+ <Product Id="$(var.ProductId)" 
+          Name="$(var.ProductName)" 
+          Language="1033" 
+          Version="$(var.ProductVersion)" 
+          Manufacturer="$(var.ProductManufacturer)"
+          UpgradeCode="$(var.ProductUpgradeCode)">
+   
+    <Package InstallerVersion="200" Compressed="yes" />
+
+
+   <Upgrade Id="$(var.ProductUpgradeCode)">
+     <UpgradeVersion OnlyDetect="yes" Minimum="$(var.ProductVersion)" Property="NEWERVERSIONDETECTED" IncludeMinimum="no" />
+     <UpgradeVersion OnlyDetect="no" Maximum="$(var.ProductVersion)" Property="OLDERVERSIONBEINGUPGRADED" IncludeMaximum="no" />
+   </Upgrade>
+
+   <InstallExecuteSequence>
+     <RemoveExistingProducts Before="InstallInitialize" />
+   </InstallExecuteSequence>
+
+
+   
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER"/>
+    <Property Id="IS_CREATE_MENUSHORTCUT" Value="1" />
+    <Property Id="IS_CREATE_DESKTOPSHORTCUT" Value="1" />
+    <Property Id="IS_STARTUP" Value="1" />
+
+    <PropertyRef Id="WIX_IS_NETFRAMEWORK_462_OR_LATER_INSTALLED" />
+
+   <UIRef Id="CustomWixUI_InstallDir" />
+
+   <WixVariable Id="WixUILicenseRtf" Value="$(var.PathLicense)" />
+   
+   <Feature Id="ProductFeature" Title="$(var.ProductName)" Level="1">
+     <ComponentGroupRef Id="ProductComponents" />
+     <ComponentRef Id="ApplicationShortcutDesktop"/>
+     <ComponentRef Id="ApplicationShortcut"/>
+     <ComponentRef Id="ApplicationAutostart"/>     
+   </Feature>
+
+   <!--Check on version .net framework-->
+   <Condition Message="$(var.ProductName) requires .NET Framework 4.6.2 or higher.">
+     <![CDATA[WIX_IS_NETFRAMEWORK_462_OR_LATER_INSTALLED]]>
+   </Condition>
+
+
+
+
+
+ </Product>      
+</Wix>
