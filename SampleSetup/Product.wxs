@@ -13,24 +13,25 @@
     <Package InstallerVersion="200" Compressed="yes" />
 
 
-   <Upgrade Id="$(var.ProductUpgradeCode)">
-     <UpgradeVersion OnlyDetect="yes" Minimum="$(var.ProductVersion)" Property="NEWERVERSIONDETECTED" IncludeMinimum="no" />
-     <UpgradeVersion OnlyDetect="no" Maximum="$(var.ProductVersion)" Property="OLDERVERSIONBEINGUPGRADED" IncludeMaximum="no" />
-   </Upgrade>
-
-   <InstallExecuteSequence>
-     <RemoveExistingProducts Before="InstallInitialize" />
-   </InstallExecuteSequence>
+    <MajorUpgrade
+         Schedule="afterInstallInitialize"
+         AllowDowngrades="no"
+         AllowSameVersionUpgrades="yes"
+         DowngradeErrorMessage="Your version is below the set"/>
 
 
-   
     <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER"/>
     <Property Id="IS_CREATE_MENUSHORTCUT" Value="1" />
     <Property Id="IS_CREATE_DESKTOPSHORTCUT" Value="1" />
     <Property Id="IS_STARTUP" Value="1" />
 
-    <PropertyRef Id="WIX_IS_NETFRAMEWORK_462_OR_LATER_INSTALLED" />
+     <Property Id="REMOVE_FOLDER">
+       <RegistrySearch Key="$(var.RegistryKey)" Root="HKCU" Type="raw"
+                       Id="REGSEARCH" Name="Path" />
+     </Property>
+
+   <PropertyRef Id="WIX_IS_NETFRAMEWORK_462_OR_LATER_INSTALLED" />
 
    <UIRef Id="CustomWixUI_InstallDir" />
 
@@ -40,17 +41,15 @@
      <ComponentGroupRef Id="ProductComponents" />
      <ComponentRef Id="ApplicationShortcutDesktop"/>
      <ComponentRef Id="ApplicationShortcut"/>
-     <ComponentRef Id="ApplicationAutostart"/>     
+     <ComponentRef Id="ApplicationAutostart"/>
+     <ComponentRef Id="ApplicationFullRemove"/>
+     <ComponentRef Id="ApplicationRemoveRegistryKey"/>
    </Feature>
 
    <!--Check on version .net framework-->
    <Condition Message="$(var.ProductName) requires .NET Framework 4.6.2 or higher.">
      <![CDATA[WIX_IS_NETFRAMEWORK_462_OR_LATER_INSTALLED]]>
    </Condition>
-
-
-
-
 
  </Product>      
 </Wix>

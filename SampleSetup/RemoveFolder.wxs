@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include Variables.wxi?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <Fragment>
+    <DirectoryRef Id="TARGETDIR">
+      <Component Id="ApplicationFullRemove" Guid="3936e1bc-c06c-45ae-c1db-430cf31dd48e">
+        <RegistryValue Root="HKCU" Key="$(var.RegistryKey)" Name="Path" Type="string" Value="[INSTALLFOLDER]" KeyPath="yes" />
+        <util:RemoveFolderEx On="uninstall" Property="REMOVE_FOLDER" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+</Wix>

@@ -5,9 +5,10 @@
   <?define AppName="SampleProject"?>
   <?define ProductId="*"?>
   <?define ProductName="SampleProject"?>
-  <?define ProductVersion="99.0.0.0"?>
+  <?define ProductVersion="1.0.0.0"?>
   <?define ProductManufacturer="SampleProject"?>
   <?define ProductUpgradeCode="3936e1bc-c06c-45ae-b1db-430cf31dd48b"?>
   <?define PathLicense="$(var.ProjectDir)License\License.rtf"?>
+  <?define RegistryKey="Software\$(var.ProductManufacturer)\$(var.ProductName)" ?>
      
 </Include>

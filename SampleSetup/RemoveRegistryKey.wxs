@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="TARGETDIR">
+      <Component Id ="ApplicationRemoveRegistryKey" Guid="fce29908-841a-42d8-9e2d-1a53b1b0b3b7">
+        <RemoveRegistryKey Id="ApplicationRemoveRegistryKey" Action="removeOnUninstall" Root="HKCR" Key="YOUR_PATH_TO_KEY"/>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+</Wix>

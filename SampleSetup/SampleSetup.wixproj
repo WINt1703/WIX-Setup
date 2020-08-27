@@ -23,6 +23,8 @@
     <Compile Include="Moduls\CustomUI\CustomWixUI_InstallDir.wxs" />
     <Compile Include="Moduls\CustomUI\ShortcutsDlg.wxs" />
     <Compile Include="Product.wxs" />
+    <Compile Include="RemoveFolder.wxs" />
+    <Compile Include="RemoveRegistryKey.wxs" />
     <Compile Include="Shortcuts.wxs" />
     <Compile Include="StartUp.wxs" />
   </ItemGroup>
@@ -31,13 +33,6 @@
     <Content Include="Moduls\WixNetFxExtension.dll" />
     <Content Include="Moduls\wixuiextension.dll" />
     <Content Include="Moduls\WixUtilExtension.dll" />
-    <Content Include="SampleScreen\Screenshot_1.png" />
-    <Content Include="SampleScreen\Screenshot_2.png" />
-    <Content Include="SampleScreen\Screenshot_3.png" />
-    <Content Include="SampleScreen\Screenshot_4.png" />
-    <Content Include="SampleScreen\Screenshot_5.png" />
-    <Content Include="SampleScreen\Screenshot_6.png" />
-    <Content Include="SampleScreen\Screenshot_7.png" />
     <Content Include="SampleSetup.wax" />
     <Content Include="Variables.wxi" />
   </ItemGroup>
@@ -45,9 +40,12 @@
     <Folder Include="License" />
     <Folder Include="Moduls" />
     <Folder Include="Moduls\CustomUI" />
-    <Folder Include="SampleScreen" />
   </ItemGroup>
   <ItemGroup>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>Moduls\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
     <WixExtension Include="WixNetFxExtension">
       <HintPath>..\..\golog-tools\SetupProject1\Moduls\WixNetFxExtension.dll</HintPath>
       <Name>WixNetFxExtension</Name>
